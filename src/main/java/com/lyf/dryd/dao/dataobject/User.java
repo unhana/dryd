@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Data
@@ -23,4 +24,7 @@ public class User implements Serializable {
     private Long id;
     private String username;
     private String password;
+    private Integer accountType;
+    private Date gmtCreate;
+    private Boolean deleted;
 }
