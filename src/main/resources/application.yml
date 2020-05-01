@@ -1,1 +1,15 @@
+server:
+  port: 8080
 
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/dryd?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT%2B8&allowPublicKeyRetrieval=true
+    #账号
+    username: wzy
+    #密码
+    password: 971031
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
