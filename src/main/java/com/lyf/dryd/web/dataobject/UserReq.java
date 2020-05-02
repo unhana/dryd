@@ -13,4 +13,6 @@ public class UserReq {
 
     private String password;
 
+    private String type;
+
 }
