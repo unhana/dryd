@@ -23,6 +23,6 @@ public class I18nUtils {
     }
 
     public static String formatMsg(String value, String[] params){
-        return MessageFormat.format(value, (Object) params);
+        return MessageFormat.format(value, params);
     }
 }

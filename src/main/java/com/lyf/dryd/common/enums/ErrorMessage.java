@@ -9,6 +9,10 @@ public enum ErrorMessage {
 
     SYSTEM_ERROR("SYSTEM_ERROR", MsgType.SIMPLE, "系统异常,请重试"),
 
+    USER_CAN_NOT_EMPTY("USER_CAN_NOT_EMPTY", MsgType.SIMPLE, "用户不能为空"),
+
+    USER_ALREADY_EXISTS("USER_ALREADY_EXISTS", MsgType.FORMAT, "用户{0}已存在"),
+
     MEMBER_FULL("MEMBER_FULL", MsgType.FORMAT, "课程{0}已满员")
 
     ;

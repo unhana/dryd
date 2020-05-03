@@ -1,5 +1,7 @@
 package com.lyf.dryd.web.intercept;
 
+import com.lyf.dryd.common.dataobject.UserInfoVO;
+import com.lyf.dryd.common.utils.UserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,7 +20,7 @@ public class ControllerInterceptor  implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
-        log.info("inininininininini");
+        UserUtils.saveUserInfo(new UserInfoVO());
         return true;
     }
 
