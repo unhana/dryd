@@ -52,7 +52,6 @@ public class UserController {
     @PostMapping(path = "login")
     public ViewResult login(@RequestBody UserReq user, HttpServletResponse response, HttpSession session){
         AssertUtil.checkNull(user, ErrorMessage.USER_CAN_NOT_EMPTY);
-        AssertUtil.checkNull(user.getType() == null, ErrorMessage.USER_CAN_NOT_EMPTY);
         AssertUtil.checkNull(user.getUserName(), ErrorMessage.PARAM_NOT_EMPTY,"用户名");
         AssertUtil.checkNull(user.getPassword(), ErrorMessage.PARAM_NOT_EMPTY,"密码");
 
