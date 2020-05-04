@@ -3,16 +3,18 @@ package com.lyf.dryd.web.intercept;
 import com.lyf.dryd.common.dataobject.UserInfoVO;
 import com.lyf.dryd.common.utils.UserUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Component
-public class ControllerInterceptor  implements HandlerInterceptor {
+public class AuthenticationInterceptor implements HandlerInterceptor {
 
     /**
      * 预处理回调方法，实现处理器的预处理
@@ -20,7 +22,21 @@ public class ControllerInterceptor  implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
-        UserUtils.saveUserInfo(new UserInfoVO());
+        Cookie[] cookies = request.getCookies();
+        String sessionId = "";
+        for (Cookie cookie : cookies){
+            if(StringUtils.equals(cookie.getName(), "sessionId")){
+                sessionId = cookie.getValue();
+            }
+        }
+        if(StringUtils.isEmpty(sessionId)){
+            return false;
+        }
+        UserInfoVO fromCache = UserUtils.getFromCache(sessionId);
+        if(fromCache == null){
+            return false;
+        }
+        UserUtils.saveUserInfo(fromCache);
         return true;
     }
 
@@ -31,7 +47,6 @@ public class ControllerInterceptor  implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) throws Exception {
-        // TODO Auto-generated method stub
 
     }
     /**
@@ -43,7 +58,6 @@ public class ControllerInterceptor  implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        // TODO Auto-generated method stub
-
+        UserUtils.remove();
     }
 }

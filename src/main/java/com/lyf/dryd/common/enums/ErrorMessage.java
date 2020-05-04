@@ -9,9 +9,15 @@ public enum ErrorMessage {
 
     SYSTEM_ERROR("SYSTEM_ERROR", MsgType.SIMPLE, "系统异常,请重试"),
 
+    PARAM_FAIL("PARAM_FAIL", MsgType.FORMAT, "参数{0}不正确"),
+
+    PARAM_NOT_EMPTY("PARAM_NOT_EMPTY", MsgType.FORMAT, "参数[{0}]不能为空"),
+
     USER_CAN_NOT_EMPTY("USER_CAN_NOT_EMPTY", MsgType.SIMPLE, "用户不能为空"),
 
     USER_ALREADY_EXISTS("USER_ALREADY_EXISTS", MsgType.FORMAT, "用户{0}已存在"),
+
+    USER_NOT_EXISTS("USER_NOT_EXISTS", MsgType.SIMPLE, "用户不存在"),
 
     MEMBER_FULL("MEMBER_FULL", MsgType.FORMAT, "课程{0}已满员")
 
