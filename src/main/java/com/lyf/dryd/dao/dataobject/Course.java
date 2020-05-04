@@ -17,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User implements Serializable {
+public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,7 +26,14 @@ public class User implements Serializable {
     private Long id;
     private Date gmtCreate;
     private Boolean deleted;
-    private String username;
-    private String password;
-    private Integer accountType;
+    private String name;
+    private String type;
+    private Date startTime;
+    private Integer length;
+    private Long areaId;
+    private String areaName;
+    private String introduction;
+    private Long userId;
+    private Integer status;
+
 }

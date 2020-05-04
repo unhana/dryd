@@ -23,6 +23,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
         Cookie[] cookies = request.getCookies();
+        if(cookies == null || cookies.length == 0){
+            return  false;
+        }
         String sessionId = "";
         for (Cookie cookie : cookies){
             if(StringUtils.equals(cookie.getName(), "sessionId")){

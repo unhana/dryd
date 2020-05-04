@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ResponseBody
+//    @ResponseBody
     @PostMapping(path = "register")
     public ViewResult register(@RequestBody UserReq user){
         AssertUtil.checkNull(user, ErrorMessage.USER_CAN_NOT_EMPTY);

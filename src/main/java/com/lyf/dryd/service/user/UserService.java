@@ -20,7 +20,7 @@ public class UserService {
     public boolean save(User user){
         user.setDeleted(false);
         user.setGmtCreate(new Date());
-        User save = userRepository.save(user);
-        return save.getId() != null;
+        userRepository.save(user);
+        return user.getId() != null;
     }
 }
