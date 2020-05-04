@@ -27,7 +27,7 @@ public class UserUtils {
 
 
 
-    private static ThreadLocal<UserInfoVO> users = new ThreadLocal<>();
+    private static final ThreadLocal<UserInfoVO> users = new ThreadLocal<>();
 
     public static UserInfoVO getUserInfo(){
         return users.get();
