@@ -9,6 +9,7 @@ import com.lyf.dryd.dao.dataobject.User;
 import com.lyf.dryd.service.user.UserService;
 import com.lyf.dryd.web.dataobject.UserReq;
 import com.lyf.dryd.web.utils.ViewResult;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +58,8 @@ public class UserController {
 
         User userDO = userService.findByUserName(user.getUserName());
         AssertUtil.checkNull(userDO, ErrorMessage.USER_NOT_EXISTS);
+        AssertUtil.checkTrue(!StringUtils.equals(userDO.getPassword(),user.getPassword()), ErrorMessage.USER_NOT_EXISTS);
+
         UserInfoVO userInfoVO = UserInfoVO.builder()
                 .userName(userDO.getUsername())
                 .id(userDO.getId())

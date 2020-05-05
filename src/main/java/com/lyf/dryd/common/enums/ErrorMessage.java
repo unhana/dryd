@@ -19,6 +19,8 @@ public enum ErrorMessage {
 
     USER_NOT_EXISTS("USER_NOT_EXISTS", MsgType.SIMPLE, "用户不存在"),
 
+    PWD_ERROR("PWD_ERROR", MsgType.SIMPLE, "密码错误"),
+
     MEMBER_FULL("MEMBER_FULL", MsgType.FORMAT, "课程{0}已满员")
 
     ;
